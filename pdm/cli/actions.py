@@ -94,7 +94,7 @@ def do_lock(
         # any message is thrown to the output.
         try:
             with ui.open_spinner(title="Resolving dependencies") as spin:
-                reporter = project.get_reporter(requirements, tracked_names, spin)
+                reporter = project.get_reporter(requirements, spin)
                 resolver: Resolver = project.core.resolver_class(provider, reporter)
                 hooks.try_emit("pre_lock", requirements=requirements, dry_run=dry_run)
                 mapping, dependencies = resolve(

@@ -479,13 +479,11 @@ class Project:
     def get_reporter(
         self,
         requirements: list[Requirement],
-        tracked_names: Iterable[str] | None = None,
         spinner: Status | termui.DummySpinner | None = None,
     ) -> BaseReporter:
         """Return the reporter object to construct a resolver.
 
         :param requirements: requirements to resolve
-        :param tracked_names: the names of packages that needs to update
         :param spinner: optional spinner object
         :returns: a reporter
         """
