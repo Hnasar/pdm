@@ -449,6 +449,7 @@ def format_lockfile(
     and a collection of package summaries.
     """
 
+    # TODO
     packages = tomlkit.aot()
     file_hashes = tomlkit.table()
     for k, v in sorted(mapping.items()):
@@ -464,8 +465,11 @@ def format_lockfile(
             if key in file_hashes:
                 continue
             array = tomlkit.array().multiline(True)
+            # Sort by filename then url, which is a unique pair.
+            # Because there may be multiple wheels of the same name in different sources
             for link, hash_value in sorted(
-                v.hashes.items(), key=lambda l_h: (l_h[0].url_without_fragment, l_h[1])
+                v.hashes.items(),
+                key=lambda l_h: (l_h[0].filename, l_h[0].url)
             ):
                 inline = make_inline_table(
                     {"url": link.url_without_fragment, "hash": hash_value}

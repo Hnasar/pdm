@@ -358,6 +358,7 @@ class PyPIRepository(BaseRepository):
             return parser.results
 
 
+# TODO
 class LockedRepository(BaseRepository):
     def __init__(
         self,
@@ -397,6 +398,8 @@ class LockedRepository(BaseRepository):
             )
             self.candidate_info[can_id] = candidate_info
 
+        # TODO
+        if self.environment.project.tool_settings
         for key, hashes in lockfile.get("metadata", {}).get("files", {}).items():
             self.file_hashes[tuple(key.split(None, 1))] = {  # type: ignore
                 Link(item["url"]): item["hash"] for item in hashes

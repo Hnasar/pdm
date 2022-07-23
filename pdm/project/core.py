@@ -496,6 +496,7 @@ class Project:
         content_hash.trivia.trail = "\n\n"
         return {"lock_version": self.LOCKFILE_VERSION, "content_hash": content_hash}
 
+    # TODO
     def write_lockfile(
         self, toml_data: dict, show_message: bool = True, write: bool = True
     ) -> None:
